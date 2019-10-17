@@ -24,37 +24,35 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.save(article);
     }
 
-/*
     @Override
     public Optional<Article> findOne(String id) {
         return articleRepository.findById(id);
     }
 
+//    @Override
+//    public Iterable<Article> findAll() {
+//        return articleRepository.findAll();
+//    }
+//
     @Override
-    public Iterable<Article> findAll() {
-        return articleRepository.findAll();
+    public Page<Article> findByAuthorsName(String name, Pageable pageable) {
+        return articleRepository.findByAuthorsName(name, pageable);
     }
-
-    @Override
-    public Page<Article> findByAuthorName(String name, Pageable pageable) {
-        return articleRepository.findByAuthorName(name, pageable);
-    }
-
-    @Override
-    public Page<Article> findByAuthorNameUsingCustomQuery(String name, Pageable pageable) {
-        return articleRepository.findByAuthorsNameUsingCustomQuery(name, pageable);
-    }
-
-    @Override
-    public Page<Article> findByFilteredTagQuery(String tag, Pageable pageable) {
-        return articleRepository.findByFilteredTagQuery(tag, pageable);
-    }
-
-    @Override
-    public Page<Article> findByAuthorNameAndFilteredTagQuery(String name, String tag, Pageable pageable) {
-        return articleRepository.findByAuthorsNameAndFilteredTagQuery(name, tag, pageable);
-    }
-*/
+//
+//    @Override
+//    public Page<Article> findByAuthorNameUsingCustomQuery(String name, Pageable pageable) {
+//        return articleRepository.findByAuthorsNameUsingCustomQuery(name, pageable);
+//    }
+//
+//    @Override
+//    public Page<Article> findByFilteredTagQuery(String tag, Pageable pageable) {
+//        return articleRepository.findByFilteredTagQuery(tag, pageable);
+//    }
+//
+//    @Override
+//    public Page<Article> findByAuthorNameAndFilteredTagQuery(String name, String tag, Pageable pageable) {
+//        return articleRepository.findByAuthorsNameAndFilteredTagQuery(name, tag, pageable);
+//    }
 
     @Override
     public long count() {

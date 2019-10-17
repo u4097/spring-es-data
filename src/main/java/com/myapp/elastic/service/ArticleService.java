@@ -9,19 +9,17 @@ import java.util.Optional;
 public interface ArticleService {
     Article save(Article article);
 
-/*
     Optional<Article> findOne(String id);
 
-    Iterable<Article> findAll();
-
-    Page<Article> findByAuthorName(String name, Pageable pageable);
-
-    Page<Article> findByAuthorNameUsingCustomQuery(String name, Pageable pageable);
-
-    Page<Article> findByFilteredTagQuery(String tag, Pageable pageable);
-
-    Page<Article> findByAuthorNameAndFilteredTagQuery(String name, String tag, Pageable pageable);
-*/
+//    Iterable<Article> findAll();
+//
+    Page<Article> findByAuthorsName(String name, Pageable pageable);
+//
+//    Page<Article> findByAuthorNameUsingCustomQuery(String name, Pageable pageable);
+//
+//    Page<Article> findByFilteredTagQuery(String tag, Pageable pageable);
+//
+//    Page<Article> findByAuthorNameAndFilteredTagQuery(String name, String tag, Pageable pageable);
 
     long count();
 

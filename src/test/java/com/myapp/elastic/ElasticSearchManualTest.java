@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -16,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
@@ -36,6 +39,7 @@ public class ElasticSearchManualTest {
     public void before() {
         elasticsearchTemplate.deleteIndex(Article.class);
         elasticsearchTemplate.createIndex(Article.class);
+
         Article article = new Article("Spring Data Elasticsearch");
         article.setAuthors(asList(johnSmith, johnDoe));
         article.setTags("elasticsearch", "spring data");
@@ -67,6 +71,14 @@ public class ElasticSearchManualTest {
 
         article = articleService.save(article);
         assertNotNull(article.getId());
+    }
+
+    @Test
+    public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
+
+        final Page<Article> articleByAuthorName = articleService
+                .findByAuthorsName(johnSmith.getName(), PageRequest.of(0, 10));
+        assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
 }
